@@ -41,11 +41,6 @@ const Mint: NextPage = () => {
     }
   }, [mintContract]);
 
-  useEffect(() => {
-    console.log("change tokenId");
-    console.log(tokenId);
-  }, [tokenId]);
-
   const getNftNum = useCallback(async () => {
     try {
       const { ethereum } = window;
@@ -114,21 +109,16 @@ const Mint: NextPage = () => {
     }
 
     if (!hasMinted && mintContract) {
-      console.log("tokenId");
-      console.log(tokenId);
       await mintNFT(mintContract, tokenId);
     }
   };
 
   const onCreatorClick = useCallback(() => {
-    console.log("onCreatorClick");
     setTokenId(0);
-  }, [tokenId]);
+  }, []);
 
   const onSupporterClick = useCallback(() => {
     setTokenId(1);
-    console.log("onSupportClick");
-    console.log(tokenId);
   }, []);
 
   return (
